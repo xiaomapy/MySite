@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Python开发之路</title>
+    <meta name="keywords" content="个人博客,WEB学习"/>
+    <meta name="description" content="个人博客,WEB学习"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/base.css" rel="stylesheet">
+    <link href="../static/css/index.css" rel="stylesheet">
+    <link href="../static/css/m.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.css" rel="stylesheet"/>
+    <link rel="icon" href="../static/icon/color-icon_python.png" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/icon/color-icon_python.png">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/jquery.easyfader.min.js"></script>
+    <script src="../static/js/hc-sticky.js"></script>
+    <script src="../static/js/comm.js"></script>
+    <script src="../static/js/scroll.js"></script>
+    <!--[if lt IE 9]>
+    <script src="../static/js/modernizr.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header-navigation" id="header">
+    <nav>
+        <div class="logo"><a href="#">martinfly's site</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+            <li><a href="/">首页</a></li>
+            <li class="menu"><a href="Python.html">Python3</a>
+                <ul class="sub">
+                    <li><a href="#">Python基础</a></li>
+                    <li><a href="#">面向对象</a></li>
+                    <li><a href="#">网络编程</a></li>
+                    <li><a href="#">异步编程</a></li>
+                </ul>
+            </li>
+            <li><a href="Linux.html">Linux</a></li>
+            <li class="menu"><a href="frame.html">框架</a>
+                <ul class="sub">
+                    <li><a href="#">Django</a></li>
+                    <li><a href="#">Flask</a></li>
+                    <li><a href="#">Tornado</a></li>
+                </ul>
+            </li>
+            <li><a href="Web.html">前端</a></li>
+            <li class="menu"><a href="Computer.html">计算机网络</a>
+                <ul class="sub">
+                    <li><a href="#">Http</a></li>
+                    <li><a href="/article_detail/1">Websocket</a></li>
+                </ul>
+            </li>
+            <li class="menu"><a href="#">数据库</a>
+                <ul class="sub">
+                    <li><a href="#">Mysql</a></li>
+                    <li><a href="#">Redis</a></li>
+                    <li><a href="#">MongoDB</a></li>
+                </ul>
+            </li>
+            {#            <li><a href="/about/">关于我</a></li>#}
+        </ul>
+    </nav>
+</header>
+<article>
+    <main>
+        <div class="col-md-12 ">
+            <div class="blog-post">
+                <h1 class="text-center">{{ article_obj.title }}</h1>
+                <p class="text-center">author&nbsp;<a href="/">martinfly</a> | {{ article_obj.create_time }}</p>
+                <div class="content">
+                    {{ article_obj.content|safe }}
+                </div>
+            </div>
+            <br/>
+        </div>
+    </main>
+    <aside class="r_box">
+
+        <div class="fenlei">
+            <h2>文章分类</h2>
+            <ul>
+                {% for category in category_list %}
+                    <li><a href="/category/{{ category.nid }}">{{ category.title2 }}({{ category.b }})</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="guanzhu">
+            <h2>文章归档</h2>
+            <ul>
+                {% for month in month_list %}
+                    <li><a href="/month/{{ month.d }}">{{ month.d }}({{ month.c }})</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="about_me">
+            <h2>友情链接</h2>
+            <ul>
+                <li><a href="https://www.linuxidc.com/">Linux</a></li>
+                <li><a href="https://www.python.org/">Python</a></li>
+                <li><a href="http://flask.pocoo.org/docs/1.0/">Flask</a></li>
+                <li><a href="https://docs.djangoproject.com/en/2.1/ref/utils/">Django.utils</a></li>
+                <li><a href="https://www.django-rest-framework.org/">Django-Rest-Framework</a></li>
+                <li><a href="https://www.oschina.net/">开源中国</a></li>
+
+            </ul>
+        </div>
+
+
+    </aside>
+</article>
+<footer>
+    <p>Design by
+    </p>
+</footer>
+<a href="#" class="cd-top">Top</a>
+</body>
+</html>

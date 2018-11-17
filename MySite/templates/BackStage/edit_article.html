@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>后台管理</title>
+    <link href="../../static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../static/css/font-awesome.css" rel="stylesheet"/>
+    <link href="../../static/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../static/editor/css/editormd.min.css" />
+    <link rel="icon" href="../../static/icon/color-icon_python.png" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/icon/color-icon_python.png">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <form action="" method="post">
+            <div class="add_article">
+                <div class="alert-success text-center">编辑文章</div>
+                <div class="add_article_region">
+                    <div class="title form-group">
+                        <label for="">标题</label>
+                        <div>
+                            <input class="form-control" type="text" name="title" value="{{ article_obj.title }}">
+                        </div>
+                    </div>
+
+                    <div class="content form-group">
+                        <div id="test-editormd">
+                            <textarea style="display:none;" name="editormd-html-code" class="editormd-markdown-textarea">{{ article_obj.content }}</textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <hr>
+                        <p class="text-danger">分类：</p>
+                        <ul>
+                            {% for cate in cate_list %}
+                                {% if cate.title == article_obj.title2 %}
+                                    <li>{{ cate.title }}<input type="radio" name="cate" checked="checked"
+                                                               value="{{ cate.id }}"></li>
+                                {% else %}
+                                    <li>{{ cate.title }}<input type="radio" name="cate" value="{{ cate.id }}"></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <hr>
+                    </div>
+                    <input type="submit" class="btn btn-success">
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../../static/js/jquery.min.js"></script>
+<script src="../../static/editor/editormd.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var editor = editormd("test-editormd", {
+            width  : "100%",
+            height : 640,
+            path : "../../static/editor/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+            htmlDecode      : "style,script,iframe",
+            tex             : true,
+            emoji           : true,
+            taskList        : true,
+            flowChart       : true,
+            sequenceDiagram : true,
+            imageUpload:true,
+            imageFormats   : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/upload/"
+        })
+    });
+</script>
+
+
+</body>
